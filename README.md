@@ -57,7 +57,7 @@ Packages the application into a standalone JAR.
 Run the Application:
 Execute the JAR file to start the server:
 
-java -jar build/libs/BranchOne-1.0-SNAPSHOT.jar
+java -jar BranchOne-1.0-SNAPSHOT.jar
 
 
 Access the Application:
