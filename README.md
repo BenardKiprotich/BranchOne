@@ -25,10 +25,10 @@ It leverages the robustness of **Spring Boot** and the modern UI capabilities of
 - **Automated Frontend Build:** Vaadin frontend resources compile automatically during build.
 
 🧩 Project Structure
-#├── src/
-#│   ├── main/
-#│   │   ├── java/               # Backend logic (services, controllers, etc.)
-#│   │   └── resources/          # Configuration files (application.properties, etc.)
+# ├── src/
+# │   ├── main/
+# │   │   ├── java/               # Backend logic (services, controllers, etc.)
+# │   │   └── resources/          # Configuration files (application.properties, etc.)
 │   └── frontend/               # Vaadin frontend components (TypeScript, HTML, etc.)
 ├── build.gradle                 # Gradle build configuration
 ├── settings.gradle              # Gradle project settings
