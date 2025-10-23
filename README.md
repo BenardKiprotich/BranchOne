@@ -34,18 +34,18 @@ It leverages the robustness of **Spring Boot** and the modern UI capabilities of
 ├── settings.gradle              # Gradle project settings
 └── application.properties      # Application settings
 
-# ⚙️ Configuration
+**⚙️ Configuration**
 Before building, ensure the following settings are configured in src/main/resources/application.properties:
-# Enable production mode for optimized frontend builds
+Enable production mode for optimized frontend builds
 vaadin.productionMode=true
 
-# Set the server port (default: 8080)
+**Set the server port (default: 8080)**
 server.port=8080
 
 # 🛠️ Build Instructions
 
 Clean and Build:
-# Use the Gradle wrapper to compile the project and package it into a runnable JAR:
+Use the Gradle wrapper to compile the project and package it into a runnable JAR:
  gradlew clean vaadinBuildFrontend bootJar
 
 This command:
