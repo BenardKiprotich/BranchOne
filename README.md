@@ -44,8 +44,8 @@ server.port=8080
 
 # 🛠️ Build Instructions
 
-Clean and Build:
-Use the Gradle wrapper to compile the project and package it into a runnable JAR:
+#Clean and Build:
+#Use the Gradle wrapper to compile the project and package it into a runnable JAR:
  gradlew clean vaadinBuildFrontend bootJar
 
 This command:
