@@ -1,0 +1,55 @@
+### OS ###
+.DS_Store
+Thumbs.db
+
+### Logs and temp files ###
+*.log
+*.tmp
+*.bak
+
+### Build artifacts ###
+.gradle/
+build/
+target/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### IntelliJ IDEA ###
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### Eclipse ###
+.apt_generated/
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### NetBeans ###
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+### Visual Studio Code ###
+.vscode/
+
+### Vaadin and Node ###
+node_modules/
+frontend/generated/
+
+### Distribution packages ###
+*.jar
+*.war

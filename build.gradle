@@ -1,0 +1,118 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.5.6'
+    id 'io.spring.dependency-management' version '1.1.7'
+    id 'com.vaadin' version '24.3.8'
+}
+
+group = 'com.benguides'
+version = '1.0-SNAPSHOT'
+sourceCompatibility = '21'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Spring Boot Starters
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    // Vaadin UI
+    implementation 'com.vaadin:vaadin-spring-boot-starter:24.3.8'
+
+    // MySQL Driver
+    runtimeOnly 'com.mysql:mysql-connector-j'
+
+    // H2 Database
+    runtimeOnly 'com.h2database:h2'
+
+    // Lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // DevTools (hot reload, optional)
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    // Testing
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+// Ensure Vaadin frontend is built before packaging
+bootJar {
+    dependsOn vaadinBuildFrontend
+}
+
+test {
+    useJUnitPlatform()
+}
+
+// Vaadin plugin configuration
+vaadin {
+    productionMode = true
+    // Add this to ensure proper resource handling
+    pnpmEnable = true
+}
+
+// Optional: Add this to handle frontend resources in JAR
+bootJar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+/*
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.5.6'
+    id 'io.spring.dependency-management' version '1.1.7'
+    id 'com.vaadin' version '24.3.8'
+}
+
+group = 'com.benguides'
+version = '1.0-SNAPSHOT'
+sourceCompatibility = '21'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Spring Boot Starters
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    // Vaadin UI
+    implementation 'com.vaadin:vaadin-spring-boot-starter:24.3.8'
+
+    // MySQL Driver
+    runtimeOnly 'com.mysql:mysql-connector-j'
+
+    // H2 Database
+    runtimeOnly 'com.h2database:h2'
+
+    // Lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // DevTools (hot reload, optional)
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    // Testing
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+// Ensure Vaadin frontend is built before packaging
+bootJar.dependsOn vaadinBuildFrontend
+
+test {
+    useJUnitPlatform()
+}
+
+// Optional: Vaadin plugin configuration
+vaadin {
+    productionMode = true       // ensures frontend is precompiled for jar
+}*/

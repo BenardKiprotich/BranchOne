@@ -1,0 +1,54 @@
+:root {
+  --lumo-primary-color: #2563eb;
+  --lumo-primary-color-50pct: rgba(37, 99, 235, 0.5);
+  --lumo-success-color: #10b981;
+  --lumo-contrast-5pct: rgba(0, 0, 0, 0.05);
+}
+
+.stat-card {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--lumo-box-shadow-m);
+}
+
+.bg-primary {
+  background: linear-gradient(135deg, var(--lumo-primary-color-50pct), var(--lumo-primary-color-10pct));
+  border-left: 4px solid var(--lumo-primary-color);
+}
+
+.bg-success {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
+  border-left: 4px solid var(--lumo-success-color);
+}
+
+.bg-contrast {
+  background: linear-gradient(135deg, var(--lumo-contrast-5pct), var(--lumo-contrast-10pct));
+  border-left: 4px solid var(--lumo-contrast-20pct);
+}
+
+.login-overlay {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.company-header {
+  background: linear-gradient(135deg, var(--lumo-primary-color), #1e40af);
+  color: white;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.branch-header {
+  background: linear-gradient(135deg, var(--lumo-success-color), #059669);
+  color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.navigation-scroller {
+  border: none;
+}
