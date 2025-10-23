@@ -89,7 +89,7 @@ public class SaleTransaction {
         NIGHT
     }
 
-    // Transient getters for calculated values (if needed in code)
+    // Transient getters for calculated value
     @Transient
     public BigDecimal getCalculatedQuantity() {
         return litresClosingReading.subtract(litresOpeningReading).max(BigDecimal.ZERO);

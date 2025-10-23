@@ -63,7 +63,6 @@ public class SuperAdminUsersView extends VerticalLayout {
         userGrid.addColumn(u -> String.join(", ", u.roles())).setHeader("Roles").setAutoWidth(true);
         userGrid.addColumn(u -> u.status().name()).setHeader("Status").setAutoWidth(true);
 
-        // You can still add buttons if needed, but you’ll need to fetch User entity for editing
         userGrid.setHeight("500px");
         add(userGrid);
     }

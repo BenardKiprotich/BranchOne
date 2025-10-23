@@ -50,17 +50,11 @@ public class LoginView extends LoginOverlay implements BeforeEnterObserver {
                         "Make sure your account is active and not locked."
         );
 
-        // Additional messages
-//        LoginI18n.AdditionalMessage additionalMessage = new LoginI18n.AdditionalMessage();
-//        additionalMessage.setText("Need help? Contact your system administrator.");
-//        i18n.setAdditionalMessage(additionalMessage);
-
         setI18n(i18n);
 
         // Enable forgot password feature
         setForgotPasswordButtonVisible(true);
         addForgotPasswordListener(e -> {
-            // For now, just show a message. You can implement the actual flow later
             UI.getCurrent().getPage().executeJs(
                     "alert('Please contact your system administrator to reset your password.');"
             );

@@ -248,7 +248,6 @@ public class CompanyAdminView extends VerticalLayout {
             return actions;
         }).setHeader("Actions").setAutoWidth(true);
 
-        // ✅ Add modern styling and header theme
         branchGrid.addThemeVariants(
                 GridVariant.LUMO_ROW_STRIPES,
                 GridVariant.LUMO_COLUMN_BORDERS,
@@ -262,7 +261,7 @@ public class CompanyAdminView extends VerticalLayout {
                 .set("background", "white")
                 .set("--lumo-primary-text-color", "#0A9396");
 
-        // ✅ Custom header styling (orange background with white text)
+        // Custom header styling (orange background with white text)
         branchGrid.getElement().executeJs("""
         const headerRows = this.shadowRoot.querySelectorAll('thead th');
         headerRows.forEach(th => {
@@ -274,7 +273,7 @@ public class CompanyAdminView extends VerticalLayout {
         });
     """);
 
-        // ✅ Add subtle hover effect for rows
+        // Add subtle hover effect for rows
         branchGrid.getElement().executeJs("""
         const rows = this.shadowRoot.querySelectorAll('tbody tr');
         rows.forEach(row => {

@@ -145,18 +145,11 @@ public class SuperAdminRolesAndPermissionView extends VerticalLayout {
         selectedRoleLabel.getStyle().set("color", "var(--lumo-primary-color)");
         header.add(title, selectedRoleLabel);
 
-        //old
-//        searchField = new TextField();
-//        searchField.setPlaceholder("Search permissions...");
-//        searchField.setClearButtonVisible(true);
-//        searchField.setWidth("50%");
-//        searchField.addValueChangeListener(e -> filterPermissions(e.getValue()));
-        //
         searchField = new TextField();
         searchField.setPlaceholder("Search permissions...");
         searchField.setClearButtonVisible(true);
         searchField.setWidth("50%");
-        searchField.setValueChangeMode(ValueChangeMode.EAGER); // 🔹 triggers on every key release
+        searchField.setValueChangeMode(ValueChangeMode.EAGER); // triggers on every key release
         searchField.addValueChangeListener(e -> {
             UI ui = UI.getCurrent();
             String value = e.getValue();

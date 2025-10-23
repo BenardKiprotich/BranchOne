@@ -18,7 +18,6 @@ public record SaleTransactionDTO(
         BigDecimal unitPrice,
         BigDecimal buyingPrice,
         BigDecimal costOfSales,
-        //String shiftSession,
         SaleTransaction.ShiftSession shiftSession,
         String productName,
         String branchName,

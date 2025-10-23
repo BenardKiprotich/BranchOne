@@ -40,7 +40,6 @@ public class CompanyManagementView extends VerticalLayout {
     private final CompanyService companyService;
     private final UserService userService;
     private final SecurityService securityService;
-    private final PasswordEncoder passwordEncoder;
 
     private Grid<Company> companyGrid;
     private Button addCompanyButton;
@@ -69,11 +68,10 @@ public class CompanyManagementView extends VerticalLayout {
 
     @Autowired
     public CompanyManagementView(CompanyService companyService, UserService userService,
-                                 SecurityService securityService, PasswordEncoder passwordEncoder) {
+                                 SecurityService securityService) {
         this.companyService = companyService;
         this.userService = userService;
         this.securityService = securityService;
-        this.passwordEncoder = passwordEncoder;
 
         setSizeFull();
         setPadding(true);
@@ -176,63 +174,6 @@ public class CompanyManagementView extends VerticalLayout {
         buttons.setWidthFull();
         buttons.setJustifyContentMode(JustifyContentMode.END);
     }
-
-//    private void initializeFormFields() {
-//        companyName = new TextField("Company Name");
-//        companyName.setRequired(true);
-//        companyName.setRequiredIndicatorVisible(true);
-//
-//        companyAddress = new TextField("Address");
-//        companyAddress.setRequired(true);
-//        companyAddress.setRequiredIndicatorVisible(true);
-//
-//        countryCode = new ComboBox<>("Country Code");
-//        countryCode.setItems(countryCodes);
-//        countryCode.setItemLabelGenerator(code -> code);
-//        countryCode.setValue("+254"); // Default to Kenya
-//        countryCode.setWidth("150px");
-//
-//        companyPhoneNumber = new TextField("Phone Number");
-//        companyPhoneNumber.setRequired(true);
-//        companyPhoneNumber.setRequiredIndicatorVisible(true);
-//        companyPhoneNumber.setPlaceholder("xxxxxxxxx");
-//        companyPhoneNumber.setMaxLength(9);
-//        companyPhoneNumber.setMinLength(9);
-//
-//        // Prevent non-digit characters
-//        companyPhoneNumber.addInputListener(event -> {
-//            String digitsOnly = companyPhoneNumber.getValue().replaceAll("[^0-9]", "");
-//            if (!companyPhoneNumber.getValue().equals(digitsOnly)) {
-//                companyPhoneNumber.setValue(digitsOnly);
-//            }
-//        });
-//
-//        companyEmail = new EmailField("Company Email");
-//        companyEmail.setRequired(true);
-//        companyEmail.setRequiredIndicatorVisible(true);
-//
-//        adminFirstName = new TextField("Admin First Name");
-//        adminFirstName.setRequired(true);
-//        adminFirstName.setRequiredIndicatorVisible(true);
-//
-//        adminLastName = new TextField("Admin Last Name");
-//        adminLastName.setRequired(true);
-//        adminLastName.setRequiredIndicatorVisible(true);
-//
-//        adminUsername = new TextField("Username");
-//        adminUsername.setRequired(true);
-//        adminUsername.setRequiredIndicatorVisible(true);
-//
-//        adminEmail = new EmailField("Admin Email");
-//        adminEmail.setRequired(true);
-//        adminEmail.setRequiredIndicatorVisible(true);
-//
-//        adminPassword = new PasswordField("Password");
-//        adminPassword.setRequired(true);
-//        adminPassword.setRequiredIndicatorVisible(true);
-//        adminPassword.setValue("Temp@123");
-//        adminPassword.setHelperText("Must contain uppercase, lowercase, number, and special character");
-//    }
     private void initializeFormFields() {
         companyName = new TextField("Company Name");
         companyName.setRequired(true);
@@ -293,68 +234,6 @@ public class CompanyManagementView extends VerticalLayout {
         adminPassword.setErrorMessage("Password must meet the required format");
     }
 
-
-//    private void setupValidation() {
-//        companyBinder = new Binder<>(Company.class);
-//        userBinder = new Binder<>(User.class);
-//
-//        // Company validation
-//        companyBinder.forField(companyName)
-//                .asRequired("Company name is required")
-//                .withValidator(new StringLengthValidator(
-//                        "Company name must be between 2 and 100 characters", 2, 100))
-//                .bind(Company::getName, Company::setName);
-//
-//        companyBinder.forField(companyAddress)
-//                .asRequired("Company address is required")
-//                .withValidator(new StringLengthValidator(
-//                        "Address must be between 5 and 200 characters", 5, 200))
-//                .bind(Company::getAddress, Company::setAddress);
-//
-//        companyBinder.forField(companyEmail)
-//                .asRequired("Company email is required")
-//                .withValidator(new EmailValidator("Please enter a valid company email address"))
-//                .bind(Company::getEmail, Company::setEmail);
-//
-//        // User validation
-//        userBinder.forField(adminFirstName)
-//                .asRequired("First name is required")
-//                .withValidator(new StringLengthValidator(
-//                        "First name must be between 2 and 50 characters", 2, 50))
-//                .withValidator(new RegexpValidator(
-//                        "First name can only contain letters", "^[a-zA-Z\\s]+$"))
-//                .bind(User::getFirstName, User::setFirstName);
-//
-//        userBinder.forField(adminLastName)
-//                .asRequired("Last name is required")
-//                .withValidator(new StringLengthValidator(
-//                        "Last name must be between 2 and 50 characters", 2, 50))
-//                .withValidator(new RegexpValidator(
-//                        "Last name can only contain letters", "^[a-zA-Z\\s]+$"))
-//                .bind(User::getLastName, User::setLastName);
-//
-//        userBinder.forField(adminUsername)
-//                .asRequired("Username is required")
-//                .withValidator(new StringLengthValidator(
-//                        "Username must be between 3 and 50 characters", 3, 50))
-//                .withValidator(new RegexpValidator(
-//                        "Username can only contain letters, numbers and underscores", "^[a-zA-Z0-9_]+$"))
-//                .bind(User::getUsername, User::setUsername);
-//
-//        userBinder.forField(adminEmail)
-//                .asRequired("Admin email is required")
-//                .withValidator(new EmailValidator("Please enter a valid admin email address"))
-//                .bind(User::getEmail, User::setEmail);
-//
-//        userBinder.forField(adminPassword)
-//                .asRequired("Password is required")
-//                .withValidator(new StringLengthValidator(
-//                        "Password must be at least 8 characters", 8, null))
-//                .withValidator(new RegexpValidator(
-//                        "Password must contain uppercase, lowercase, number and special character",
-//                        "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$"))
-//                .bind(User::getPassword, User::setPassword);
-//    }
     private void setupValidation() {
         companyBinder = new Binder<>(Company.class);
         userBinder = new Binder<>(User.class);
@@ -431,7 +310,6 @@ public class CompanyManagementView extends VerticalLayout {
             userBinder.validate();
         });
 
-        // Optional: also validate as user types in password
         adminPassword.addValueChangeListener(event -> {
             userBinder.validate();
         });

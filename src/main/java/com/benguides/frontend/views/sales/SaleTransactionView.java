@@ -158,14 +158,14 @@ public class SaleTransactionView extends VerticalLayout {
         headerContainer.getStyle()
                 .set("background", "linear-gradient(135deg, #FF7F11, #0A9396)")
                 .set("border-radius", "0.75rem")
-                .set("padding", "1rem 1rem 0.8rem 1rem") // 🔸 Reduced bottom padding
+                .set("padding", "1rem 1rem 0.8rem 1rem") // Reduced bottom padding
                 .set("margin-bottom", "0.8rem")
                 .set("box-shadow", "0 3px 8px rgba(0,0,0,0.1)")
                 .set("color", "white")
                 .set("position", "relative")
                 .set("overflow", "hidden")
                 .set("width", "100%")
-                .set("min-height", "80px"); // 🔸 Reduced header height
+                .set("min-height", "80px"); // Reduced header height
 
         Div overlay = new Div();
         overlay.getStyle()
@@ -181,7 +181,7 @@ public class SaleTransactionView extends VerticalLayout {
         header.getStyle()
                 .set("color", "white")
                 .set("font-weight", "800")
-                .set("font-size", "1.8rem") // 🔸 Slightly smaller
+                .set("font-size", "1.8rem") // Slightly smaller
                 .set("margin", "0")
                 .set("text-shadow", "0 2px 4px rgba(0,0,0,0.3)")
                 .set("letter-spacing", "0.5px")
@@ -239,9 +239,9 @@ public class SaleTransactionView extends VerticalLayout {
                 .set("border-radius", "0.75rem")
                 .set("box-shadow", "0 2px 8px rgba(0,0,0,0.07)")
                 .set("border", "1px solid rgba(255,127,17,0.1)")
-                .set("padding", "0.8rem 1.2rem") // 🔸 Reduced padding
+                .set("padding", "0.8rem 1.2rem") // Reduced padding
                 .set("margin-bottom", "0.8rem")
-                .set("min-height", "250px")   // 🔸 Reduced container height
+                .set("min-height", "250px")   // Reduced container height
                 .set("max-width", "95%")
                 .set("margin-left", "auto")
                 .set("margin-right", "auto");
@@ -328,65 +328,6 @@ public class SaleTransactionView extends VerticalLayout {
 
         return salesLayout;
     }
-
-    private void showSaleEntryDialogOrignal(Optional<SaleTransactionDTO> optDto) {
-        isEdit = optDto.isPresent();
-        editId = isEdit ? optDto.get().id() : null;
-
-        currentDialog = new Dialog();
-        currentDialog.setWidth("800px");
-        currentDialog.setMaxWidth("90vw");
-        currentDialog.setMaxHeight("90vh");
-
-        // Create a container for the dialog content with styling
-        Div dialogContainer = new Div();
-        dialogContainer.getStyle()
-                .set("background", "white")
-                .set("border-radius", "0.75rem")
-                .set("box-shadow", "0 10px 30px rgba(0,0,0,0.2)")
-                .set("border", "1px solid rgba(255,127,17,0.2)")
-                .set("overflow", "hidden");
-
-        VerticalLayout dialogLayout = new VerticalLayout();
-        dialogLayout.setSpacing(true);
-        dialogLayout.setPadding(true);
-        dialogLayout.setMargin(false);
-        dialogLayout.setSizeFull();
-
-        HorizontalLayout headerLayout = new HorizontalLayout();
-        headerLayout.setWidthFull();
-        headerLayout.setJustifyContentMode(FlexComponent.JustifyContentMode.BETWEEN);
-        headerLayout.setAlignItems(FlexComponent.Alignment.CENTER);
-
-        H4 dialogHeader = new H4(isEdit ? "Edit Sale" : "Record New Sale");
-        dialogHeader.getStyle()
-                .set("margin", "0")
-                .set("background", "linear-gradient(135deg, #FF7F11, #0A9396)")
-                .set("-webkit-background-clip", "text")
-                .set("-webkit-text-fill-color", "transparent")
-                .set("background-clip", "text")
-                .set("font-weight", "700");
-
-        Button closeButton = new Button("Close", e -> currentDialog.close());
-        closeButton.getStyle().set("color", "#FF7F11");
-
-        headerLayout.add(dialogHeader, closeButton);
-
-        VerticalLayout entryForm = createEntryForm();
-        entryForm.setSizeFull();
-
-        dialogLayout.add(headerLayout, entryForm);
-        dialogContainer.add(dialogLayout);
-        currentDialog.add(dialogContainer);
-
-        if (isEdit) {
-            populateEditFields(optDto.get());
-            productComboBox2.setVisible(false);
-            product2Form.setVisible(false);
-        }
-
-        currentDialog.open();
-    }
     private void showSaleEntryDialog(Optional<SaleTransactionDTO> optDto) {
         isEdit = optDto.isPresent();
         editId = isEdit ? optDto.get().id() : null;
@@ -441,12 +382,6 @@ public class SaleTransactionView extends VerticalLayout {
         VerticalLayout entryForm = createEntryForm();
         entryForm.setSizeFull();
         entryForm.getStyle().set("padding", "1rem 1.5rem");
-
-        // === Footer Buttons (optional, if any custom ones are added later) ===
-        // HorizontalLayout footer = new HorizontalLayout();
-        // footer.setWidthFull();
-        // footer.setJustifyContentMode(FlexComponent.JustifyContentMode.END);
-        // footer.getStyle().set("padding", "0.75rem 1rem");
 
         // === Final Assembly ===
         dialogLayout.add(headerLayout, entryForm);
@@ -596,7 +531,7 @@ public class SaleTransactionView extends VerticalLayout {
         productDetailsLayout.setPadding(false);
         productDetailsLayout.setMargin(false);
 
-        // Updated colors to match your orange/teal theme
+        // orange/teal theme
         product1Form = createCompactProductForm("Product 1", "rgba(255,127,17,0.08)", true);
         product2Form = createCompactProductForm("Product 2", "rgba(10,147,150,0.08)", false);
 
@@ -690,7 +625,7 @@ public class SaleTransactionView extends VerticalLayout {
         form.add(openCash, closeCash);
         form.add(salesCash, 2);
 
-        // Litres section - more compact
+        // Litres section
         Span litresLabel = new Span("Litres Readings");
         litresLabel.getStyle()
                 .set("font-weight", "600")
@@ -1165,14 +1100,7 @@ public class SaleTransactionView extends VerticalLayout {
 
         try {
             BigDecimal[] mtdSummary = saleTransactionService.getMonthToDateCompanySalesSummary(companyId);
-            BigDecimal mtdRevenue = mtdSummary != null && mtdSummary.length > 0 ? mtdSummary[0] : BigDecimal.ZERO;
-            BigDecimal mtdCost = mtdSummary != null && mtdSummary.length > 1 ? mtdSummary[1] : BigDecimal.ZERO;
-            BigDecimal mtdQuantity = mtdSummary != null && mtdSummary.length > 2 ? mtdSummary[2] : BigDecimal.ZERO;
-            BigDecimal mtdProfit = mtdRevenue.subtract(mtdCost);
-            mtdRevenueSpan.setText(formatCurrency(mtdRevenue));
-            mtdCostSpan.setText(formatCurrency(mtdCost));
-            mtdQuantitySpan.setText(formatNumber(mtdQuantity));
-            mtdProfitSpan.setText(formatCurrency(mtdProfit));
+            periodAnalytics(mtdSummary, mtdRevenueSpan, mtdCostSpan, mtdQuantitySpan, mtdProfitSpan);
 
             Map<String, BigDecimal[]> branchData = saleTransactionService.getSalesPerBranch(companyId);
             List<AnalyticsData> branchList = convertToAnalyticsData(branchData);
@@ -1183,14 +1111,7 @@ public class SaleTransactionView extends VerticalLayout {
             totalProductGrid.setItems(totalProductList);
 
             BigDecimal[] totalSummary = saleTransactionService.getCompanyTotalSalesSummary(companyId);
-            BigDecimal totalRevenue = totalSummary != null && totalSummary.length > 0 ? totalSummary[0] : BigDecimal.ZERO;
-            BigDecimal totalCost = totalSummary != null && totalSummary.length > 1 ? totalSummary[1] : BigDecimal.ZERO;
-            BigDecimal totalQuantity = totalSummary != null && totalSummary.length > 2 ? totalSummary[2] : BigDecimal.ZERO;
-            BigDecimal totalProfit = totalRevenue.subtract(totalCost);
-            totalRevenueSpan.setText(formatCurrency(totalRevenue));
-            totalCostSpan.setText(formatCurrency(totalCost));
-            totalQuantitySpan.setText(formatNumber(totalQuantity));
-            totalProfitSpan.setText(formatCurrency(totalProfit));
+            periodAnalytics(totalSummary, totalRevenueSpan, totalCostSpan, totalQuantitySpan, totalProfitSpan);
         } catch (Exception e) {
             showError("Error loading analytics: " + e.getMessage());
         }
@@ -1208,14 +1129,7 @@ public class SaleTransactionView extends VerticalLayout {
         }
         try {
             BigDecimal[] periodSummary = saleTransactionService.getSalesSummaryBetween(companyId, from, to);
-            BigDecimal periodRevenue = periodSummary != null && periodSummary.length > 0 ? periodSummary[0] : BigDecimal.ZERO;
-            BigDecimal periodCost = periodSummary != null && periodSummary.length > 1 ? periodSummary[1] : BigDecimal.ZERO;
-            BigDecimal periodQuantity = periodSummary != null && periodSummary.length > 2 ? periodSummary[2] : BigDecimal.ZERO;
-            BigDecimal periodProfit = periodRevenue.subtract(periodCost);
-            periodRevenueSpan.setText(formatCurrency(periodRevenue));
-            periodCostSpan.setText(formatCurrency(periodCost));
-            periodQuantitySpan.setText(formatNumber(periodQuantity));
-            periodProfitSpan.setText(formatCurrency(periodProfit));
+            periodAnalytics(periodSummary, periodRevenueSpan, periodCostSpan, periodQuantitySpan, periodProfitSpan);
 
             Map<String, BigDecimal[]> periodBranchData = saleTransactionService.getSalesPerBranchBetween(companyId, from, to);
             List<AnalyticsData> periodBranchList = convertToAnalyticsData(periodBranchData);
@@ -1228,6 +1142,17 @@ public class SaleTransactionView extends VerticalLayout {
         } catch (Exception e) {
             showError("Error loading period analytics: " + e.getMessage());
         }
+    }
+
+    private void periodAnalytics(BigDecimal[] periodSummary, Span periodRevenueSpan, Span periodCostSpan, Span periodQuantitySpan, Span periodProfitSpan) {
+        BigDecimal periodRevenue = periodSummary != null && periodSummary.length > 0 ? periodSummary[0] : BigDecimal.ZERO;
+        BigDecimal periodCost = periodSummary != null && periodSummary.length > 1 ? periodSummary[1] : BigDecimal.ZERO;
+        BigDecimal periodQuantity = periodSummary != null && periodSummary.length > 2 ? periodSummary[2] : BigDecimal.ZERO;
+        BigDecimal periodProfit = periodRevenue.subtract(periodCost);
+        periodRevenueSpan.setText(formatCurrency(periodRevenue));
+        periodCostSpan.setText(formatCurrency(periodCost));
+        periodQuantitySpan.setText(formatNumber(periodQuantity));
+        periodProfitSpan.setText(formatCurrency(periodProfit));
     }
 
     private Grid<AnalyticsData> createAnalyticsGrid() {
